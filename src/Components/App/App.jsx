@@ -1,20 +1,22 @@
-import { useState } from 'react'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import LandingPage from '../LandingPage/LandingPage';
+import ViewDocumentsPage from '../ViewDocumentsPage/ViewDocumentsPage';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-</div>
-    </>
-  )
+    <Router>
+      <nav>
+        <Link to="/">Home</Link> |  
+        <Link to="/ViewDocuments">View Documents</Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/ViewDocuments" element={<ViewDocumentsPage />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
